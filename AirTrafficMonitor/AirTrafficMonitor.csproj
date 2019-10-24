@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Airspace.cs" />
     <Compile Include="AirSpaceFilter.cs" />
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="ILog.cs" />
