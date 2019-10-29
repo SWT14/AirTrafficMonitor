@@ -25,7 +25,7 @@ namespace AirTrafficMonitor
 
         public class TransponderReceiverFactory
         {
-            public static ITransponderReceiver CreateTransponderDataReceiver();
+            public static ITransponderReceiver CreateTransponderDataReceiver { get; }
         }
 
     }
