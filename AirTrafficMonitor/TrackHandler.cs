@@ -8,18 +8,24 @@ using TransponderReceiver;
 
 namespace AirTrafficMonitor
 {
-    class TrackHandler : ITrackHandler
+    public class TrackHandler : ITrackHandler
     {
-        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        public void DataHandler(object Track, RawTransponderDataEventArgs eventArgs)
         {
-            // Just display datadata
-            foreach (var data in e.TransponderData)
+            foreach (var data in eventArgs.TransponderData)
             {
-                System.Console.WriteLine($"Transponderdata {data}");
+                // Split tracks
+                var tracks = SplitData(data.TransponderData);
+
+                // Put tracks i wrapper
+                var newTrackArgs = new NewTrackArgs
+                {
+                    Tracks = tracks
+                };
+
+                // Send Event
+                sendEvent(newTrackArgs);
             }
         }
-
-        private ITransponderReceiver _receiver;
-
     }
 }

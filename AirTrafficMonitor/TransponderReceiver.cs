@@ -30,5 +30,6 @@ namespace AirTrafficMonitor
             public static ITransponderReceiver CreateTransponderDataReceiver { get; }
         }
 
+        
     }
 }
