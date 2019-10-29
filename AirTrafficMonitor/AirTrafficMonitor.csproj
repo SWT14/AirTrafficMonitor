@@ -50,6 +50,7 @@
     <Compile Include="AirSpaceFilter.cs" />
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="ILog.cs" />
+    <Compile Include="ITrackHandler.cs" />
     <Compile Include="LogCollision.cs" />
     <Compile Include="OnCollisionCourse.cs" />
     <Compile Include="Program.cs" />
