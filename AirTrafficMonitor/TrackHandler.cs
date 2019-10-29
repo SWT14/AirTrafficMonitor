@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Services;
 using System.Text;
 using System.Threading.Tasks;
+using TransponderReceiver;
 
 namespace AirTrafficMonitor
 {
@@ -18,6 +19,7 @@ namespace AirTrafficMonitor
             }
         }
 
+        private ITransponderReceiver _receiver;
 
     }
 }
