@@ -8,7 +8,7 @@ using TransponderReceiver;
 
 namespace AirTrafficMonitor
 {
-    class TrackHandler : ITrackHandler
+    public class TrackHandler : ITrackHandler
     {
         private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
