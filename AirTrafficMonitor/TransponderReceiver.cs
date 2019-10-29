@@ -9,6 +9,8 @@ namespace AirTrafficMonitor
 {
     public class TransponderReceiver
     {
+        private ITransponderReceiver receiver;
+
         public class RawTransponderDataEventArgs : EventArgs
         {
             public RawTransponderDataEventArgs(List<string> transponderData)
@@ -25,7 +27,7 @@ namespace AirTrafficMonitor
 
         public class TransponderReceiverFactory
         {
-            public static ITransponderReceiver CreateTransponderDataReceiver();
+            public static ITransponderReceiver CreateTransponderDataReceiver { get; }
         }
 
     }

@@ -9,6 +9,14 @@ namespace AirTrafficMonitor
 {
     class TrackHandler : ITrackHandler
     {
+        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        {
+            // Just display datadata
+            foreach (var data in e.TransponderData)
+            {
+                System.Console.WriteLine($"Transponderdata {}");
+            }
+        }
 
 
     }
