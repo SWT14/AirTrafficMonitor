@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitor
 {
-    class AirSpaceFilter : IAirSpaceFilter
+    public class AirSpaceFilter : IAirSpaceFilter
     {
+        public List<TrackData> _object;
+
+
+        public AirSpaceFilter(List<TrackData> object);
+        {
+            _object = object;
+        }
+
+        
+
     }
 }
