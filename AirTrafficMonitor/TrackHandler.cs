@@ -15,7 +15,7 @@ namespace AirTrafficMonitor
             // Just display datadata
             foreach (var data in e.TransponderData)
             {
-                System.Console.WriteLine($"Transponderdata {}");
+                System.Console.WriteLine($"Transponderdata {data}");
             }
         }
 
