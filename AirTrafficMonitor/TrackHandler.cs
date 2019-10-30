@@ -10,8 +10,22 @@ namespace AirTrafficMonitor
 {
     public class TrackHandler : ITrackHandler
     {
-        public void DataHandler(object Track, RawTransponderDataEventArgs eventArgs)
+        public List<Track> TrackList;
+
+        private ITransponderReceiver receiver;
+        //Constructor injection for dependency
+        public TrackHandler(ITransponderReceiver receiver)
         {
+            //Store real or fake transponder receiver
+            this.receiver = receiver;
+
+            //Attach the event to the real or fake Transponder receiver
+            receiver.TransponderDataReady += DataHandler;
+        }
+        public void DataHandler(object T, RawTransponderDataEventArgs eventArgs)
+        {
+            TrackList = new List<Tracks>();
+
             foreach (var data in eventArgs.TransponderData)
             {
                 // Split tracks
