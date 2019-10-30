@@ -15,7 +15,7 @@ namespace AirTrafficMonitor
             foreach (var data in eventArgs.TransponderData)
             {
                 // Split tracks
-                var tracks = SplitData(data.TransponderData);
+                var tracks = Tracksplitter(data.TransponderData);
 
                 // Put tracks i wrapper
                 var newTrackArgs = new NewTrackArgs
@@ -26,6 +26,11 @@ namespace AirTrafficMonitor
                 // Send Event
                 sendEvent(newTrackArgs);
             }
+        }
+
+        public void Tracksplitter()
+        {
+
         }
     }
 }
