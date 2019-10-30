@@ -10,7 +10,7 @@ namespace AirTrafficMonitor
 {
     public class TrackHandler : ITrackHandler
     {
-        public void DataHandler(object Track, RawTransponderDataEventArgs eventArgs)
+        public void DataHandler(object T, RawTransponderDataEventArgs eventArgs)
         {
             foreach (var data in eventArgs.TransponderData)
             {
@@ -27,10 +27,15 @@ namespace AirTrafficMonitor
                 sendEvent(newTrackArgs);
             }
         }
-
-        public void Tracksplitter()
-        {
-
-        }
     }
+
+    public class Track
+            {
+            public string tag { get; set; }
+            public double X_coor { get; set; }
+            public double Y_coor { get; set; }
+            public double Altitude { get; set; }
+            public double Velocity { get; set; }
+            public DateTime timestamp { get; set; }
+            }
 }
