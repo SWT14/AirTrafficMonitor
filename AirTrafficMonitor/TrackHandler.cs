@@ -24,12 +24,12 @@ namespace AirTrafficMonitor
         }
         public void DataHandler(object T, RawTransponderDataEventArgs eventArgs)
         {
-            TrackList = new List<Tracks>();
+            TrackList = new List<Track>();
 
             foreach (var data in eventArgs.TransponderData)
             {
                 // Split tracks
-                var tracks = Tracksplitter(data.TransponderData);
+                TrackList = data.TransponderData;
 
                 // Put tracks i wrapper
                 var newTrackArgs = new NewTrackArgs
