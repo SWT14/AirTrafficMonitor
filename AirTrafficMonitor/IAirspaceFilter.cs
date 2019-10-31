@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AirTrafficMonitor;
 
 namespace AirTrafficMonitor
 {
     public interface IAirSpaceFilter
     {
-        List<Track> Track { get; set; }
-
-        bool FilterTracks(Track track);
+        string Tag { get; set; }
+        double X_Coor { get; set; }
+        double Y_Coor { get; set; }
+        double Altitude { get; set; }
+        bool AirSpace { get; set; }
+        bool FilterTracks(double X, double Y, double A);
     }
 }
