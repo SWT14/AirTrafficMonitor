@@ -18,14 +18,14 @@ namespace AirTrafficMonitor
         public DateTime timestamp { get; set; }
         public bool Airspace { get; set; }
 
-        //public Track(string Tag, double X, double Y, double A)
-        //{
-        //    this.tag = Tag;
-        //    this.X_coor = X;
-        //    this.Y_coor = Y;
-        //    this.Altitude = A;
-        //    this.Airspace = FlightTrack(X, Y, A);
-        //}
+        public Track(string Tag, double X, double Y, double A)
+        {
+            this.tag = Tag;
+            this.X_coor = X;
+            this.Y_coor = Y;
+            this.Altitude = A;
+            this.Airspace = FlightTrack(X, Y, A);
+        }
 
         public bool FlightTrack(double X, double Y, double A)
         {

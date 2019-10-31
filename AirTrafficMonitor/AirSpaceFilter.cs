@@ -27,9 +27,9 @@ namespace AirTrafficMonitor
             TrackCalcDict = new Dictionary<string, ITrackCalculator>();
         }
 
-        public void onTrackCreated(object s, TrackEvent trackList)
+        public void onTrackCreated(object s, TrackEvent Trackhandler)
         {
-            Tracks = trackList.tracks;
+            trackList = Trackhandler.tracks;
             foreach (ITrack track in trackList)
             {
                 if (TrackDict.ContainsKey(track.tag))
@@ -40,7 +40,14 @@ namespace AirTrafficMonitor
                     }
                     else
                     {
-                        TrackDict[track.tag] = track;
+                        if (TrackDict[track.tag].Airspace)
+                        {
+                            Remove(track.tag);
+                        }
+                        else
+                        {
+                            TrackDict[track.tag] = track;
+                        }
                     }
                 }
                 else
@@ -52,10 +59,31 @@ namespace AirTrafficMonitor
 
         public void Create(ITrack track)
         {
-            if (TrackDict.ContainsKey(track.tag))
+            if (TrackCalcDict.ContainsKey(track.tag))
             {
-                TrackDict[track.tag] = new 
+                TrackCalcDict[track.tag] = new TrackCalculator(TrackDict[track.tag], track);
             }
+            else
+            {
+                TrackDict.Add(track.tag, new TrackCalculator(TrackDict[track.tag], track));
+            }
+
+            TrackDict[track.tag] = track;
+
+            onTrackUpdated(TrackCalcDict);
+        }
+
+        public void Remove(string tag)
+        {
+            TrackDict.Remove(tag);
+            TrackCalcDict.Remove(tag);
+
+            onTrackUpdated(TrackCalcDict);
+        }
+
+        protected virtual void onTrackUpdated(Dictionary<String, ITrackCalculator> t)
+        {
+            TrackUpdated?.Invoke(this, new TrackinAirEvent() {tracks = t});
         }
 
         public class TrackinAirEvent : EventArgs
