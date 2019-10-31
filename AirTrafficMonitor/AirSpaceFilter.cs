@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AirTrafficMonitor
 {
     public class AirSpaceFilter : IAirSpaceFilter
     {
-        public List<TrackData> _object;
+        public 
 
 
-        public AirSpaceFilter(List<TrackData> object);
+        public bool FilterTracks(double X, double Y, double A)
         {
-            _object = object;
+            if(X >= 10000 && X <= 90000)
         }
 
         
