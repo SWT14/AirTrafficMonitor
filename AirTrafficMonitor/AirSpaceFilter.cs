@@ -11,32 +11,7 @@ namespace AirTrafficMonitor
 {
     public class AirSpaceFilter : IAirSpaceFilter
     {
-        public string tag { get; set; }
-        public double X_coor { get; set; }
-        public double Y_coor { get; set; }
-        public double Altitude { get; set; }
-        public bool AirSpace { get; set; }
-
-        public AirSpaceFilter(string Tag, double X, double Y, double A)
-        {
-            this.tag = Tag;
-            this.X_coor = X;
-            this.Y_coor = Y;
-            this.Altitude = A;
-            this.AirSpace = FilterTracks(X, Y, A);
-
-        }
-
-
-        public bool FilterTracks(double X, double Y, double A)
-        {
-            if (X >= 10000 && X <= 90000 && Y >= 10000 && Y <= 90000 && A >= 500 && A <= 20000)
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+      
 
         
 

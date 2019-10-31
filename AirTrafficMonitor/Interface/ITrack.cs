@@ -11,5 +11,7 @@ namespace AirTrafficMonitor
         double Velocity { get; set; }
         double CompassCourse { get; set; }
         DateTime timestamp { get; set; }
+        bool Airspace { get; set; }
+        bool FlightTrack(double X, double Y, double A);
     }
 }
