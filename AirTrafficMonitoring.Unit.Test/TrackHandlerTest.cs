@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AirTrafficMonitor;
 using NSubstitute;
 using NUnit.Framework;
+using AirTrafficMonitor.TransponderReceiver;
 
 
 namespace AirTrafficMonitoring.Unit.Test
@@ -14,28 +15,29 @@ namespace AirTrafficMonitoring.Unit.Test
     public class TrackHandlerTest
     {
         private TransponderReceiver.ITransponderReceiver _transponderReceiver;
-        private List<TrackData> _trackData;
+        //private List<TrackData> _trackData;
 
-        private TransponderReceiver.RawTransponderDataEventArgs _fakeData;
+        private TransponderReceiver.RawTransponderDataEventArgs _dataEventArgs;
         private TrackHandler _uut;
-        private List<string> _list;
-        private int _eventCalled;
+        //private List<string> _list;
+        //private int _eventCalled;
 
         [SetUp]
         public void SetUp()
         {
-            _transponderReceiver = Substitute.For<TransponderReceiver.ITransponderReceiver>();
-            _trackData = new List<TrackData>();
+            _dataEventArgs = null;
+            _uut = new TrackHandler();
+            
+            //_list = new List<string>();
+            //_eventCalled = 0;
 
-            _fakeData = new TransponderReceiver.RawTransponderDataEventArgs(_list);
-            _uut = new TrackHandlerTest();
-            _eventCalled = 0;
-            _list = new List<string>();
+            _uut.TransponderReceiver.RawTransponderDataEventArgs += (object, args) =>
+            {
+                _dataEventArgs = args;
+            };
         }
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        [Test]
+        public void TrackHandler_DataHandler_
     }
 }
