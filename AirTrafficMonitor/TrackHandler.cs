@@ -37,6 +37,7 @@ namespace AirTrafficMonitor
                 // Send Event
                // sendEvent(newTrackArgs);
             }
+            _trackList.ForEach(Console.WriteLine);
         }
 
         public void Rawhandler(string data) // tager data fra TransponderData som parameter og konvertere det til Tracks
@@ -50,17 +51,14 @@ namespace AirTrafficMonitor
                 "yyyyMMddHHmmssfff",
                 null,
                 DateTimeStyles.None); //anveder datetime til at give os dato og tid på dagen.
-            var track = new Track
+            _trackList.Add(new Track()  // tilføjer tracket til _tracklist efter det er konveteret
             {
                 tag = TagId,
                 X_coor = Xcoor,
                 Y_coor = Ycoor,
                 Altitude = altitude,
                 timestamp = dateTime
-            };
-            _trackList.Add(track);  // tilføjer tracket til _tracklist efter det er konveteret til et objekt af typen Track
-            System.Console.WriteLine(_trackList);
-            System.Console.WriteLine(data);
+            });
         }
     }
 }
