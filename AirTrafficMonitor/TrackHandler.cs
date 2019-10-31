@@ -10,16 +10,46 @@ namespace AirTrafficMonitor
 {
     public class TrackHandler : ITrackHandler
     {
-        private void ReceiverOnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
+        public List<Track> TrackList;
+
+        private ITransponderReceiver receiver;
+        //Constructor injection for dependency
+        public TrackHandler(ITransponderReceiver receiver)
         {
-            // Just display datadata
-            foreach (var data in e.TransponderData)
+            //Store real or fake transponder receiver
+            this.receiver = receiver;
+
+            //Attach the event to the real or fake Transponder receiver
+            receiver.TransponderDataReady += DataHandler;
+        }
+        public void DataHandler(object T, RawTransponderDataEventArgs eventArgs)
+        {
+            TrackList = new List<Track>();
+
+            foreach (var data in eventArgs.TransponderData)
             {
-                System.Console.WriteLine($"Transponderdata {}");
+                // Split tracks
+                TrackList = data.TransponderData;
+
+                // Put tracks i wrapper
+                var newTrackArgs = new NewTrackArgs
+                {
+                    Tracks = tracks
+                };
+
+                // Send Event
+                sendEvent(newTrackArgs);
             }
         }
-
-        private ITransponderReceiver _receiver;
-
     }
+
+    public class Track
+            {
+            public string tag { get; set; }
+            public double X_coor { get; set; }
+            public double Y_coor { get; set; }
+            public double Altitude { get; set; }
+            public double Velocity { get; set; }
+            public DateTime timestamp { get; set; }
+            }
 }

@@ -9,4 +9,5 @@ namespace AirTrafficMonitor
     class ConsoleWriter
     {
     }
+
 }
