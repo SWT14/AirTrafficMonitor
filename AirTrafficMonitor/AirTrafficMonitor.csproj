@@ -46,11 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAirSpaceFilter.cs" />
+    <Compile Include="Interface\IAirSpaceFilter.cs" />
     <Compile Include="AirSpaceFilter.cs" />
     <Compile Include="ConsoleWriter.cs" />
-    <Compile Include="ILog.cs" />
-    <Compile Include="ITrackHandler.cs" />
+    <Compile Include="Interface\ILog.cs" />
+    <Compile Include="Interface\ITrackCalculator.cs" />
+    <Compile Include="Interface\ITrackHandler.cs" />
+    <Compile Include="Interface\ITrack.cs" />
     <Compile Include="LogCollision.cs" />
     <Compile Include="OnCollisionCourse.cs" />
     <Compile Include="Program.cs" />
@@ -63,5 +65,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
