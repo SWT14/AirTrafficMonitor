@@ -29,7 +29,7 @@ namespace AirTrafficMonitor
             foreach (var data in eventArgs.TransponderData)
             {
                 // Split tracks
-                var Rawtrack = Rawhandler(data.Transponderdata);
+                var Rawtrack = Rawhandler(eventArgs.TransponderData);
                 Rawtrack.Split(); // virker det m¨ske?
                 // Put tracks i wrapper
                 var newTrackArgs = new NewTrackArgs
