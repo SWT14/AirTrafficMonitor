@@ -12,7 +12,7 @@ namespace AirTrafficMonitor
 {
     public class TrackHandler : ITrackHandler
     {
-        public List<Track> _trackList;
+        public List<ITrack> _trackList;
         
         private ITransponderReceiver _receiver;
         //Constructor injection for dependency
@@ -28,7 +28,7 @@ namespace AirTrafficMonitor
 
         public void DataHandler(object t, RawTransponderDataEventArgs eventArgs)
         {
-            _trackList = new List<Track>();
+            _trackList = new List<ITrack>();
 
             foreach (var data in eventArgs.TransponderData)  // kalder Rawhandler på hvert track den modtager.
             {
@@ -36,11 +36,12 @@ namespace AirTrafficMonitor
                 // Split tracks
                 // Send Event
                // sendEvent(newTrackArgs);
+
             }
-            _trackList.ForEach(Console.WriteLine);
+            
         }
 
-        public void Rawhandler(string data) // tager data fra TransponderData som parameter og konvertere det til Tracks
+        public void Rawhandler(String data) // tager data fra TransponderData som parameter og konvertere det til Tracks
         {           
             var _data = data.Split(';');
             var TagId = _data[0];
@@ -51,14 +52,17 @@ namespace AirTrafficMonitor
                 "yyyyMMddHHmmssfff",
                 null,
                 DateTimeStyles.None); //anveder datetime til at give os dato og tid på dagen.
-            _trackList.Add(new Track()  // tilføjer tracket til _tracklist efter det er konveteret
+            var track = new Track
             {
                 tag = TagId,
                 X_coor = Xcoor,
                 Y_coor = Ycoor,
                 Altitude = altitude,
                 timestamp = dateTime
-            });
+            };
+            _trackList.Add(track);  // tilføjer tracket til _tracklist efter det er konveteret til et objekt af typen Track
+            System.Console.WriteLine(_trackList);
+            System.Console.WriteLine(data);
         }
     }
 }
