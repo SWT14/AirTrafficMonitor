@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Services;
@@ -38,10 +39,30 @@ namespace AirTrafficMonitor
             }
         }
 
-        public string Rawhandler(string data)
+        protected string Rawhandler(string data)
         {
+            //Use ";" as seperator for splitting data
+            var _data = data.Split(';');
+            var TagId = _data[0];  //Item 1 is the tagid
+            var Xcoor = Int32.Parse(_data[1]); //Item 2 is the coordinate for 'X'
+            var Ycoor = Int32.Parse(_data[2]); //Item 3 is the coordinate for 'Y'
+            var altitude = Int32.Parse(_data[3]); //Item 4 is the altitude
+            var dateTime = DateTime.ParseExact(_data[4], //Item 5 is the exact time
+                "yyyyMMddHHmmssfff",
+                null,
+                DateTimeStyles.None);
 
-            return Track;
+            var track = new Track
+            {
+                tag = TagId,
+                X_coor = Xcoor,
+                Y_coor = Ycoor,
+                Altitude = altitude,
+                timestamp = dateTime
+            };
+
+            return track;
+
         }
 
     }
