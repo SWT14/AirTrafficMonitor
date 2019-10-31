@@ -18,18 +18,18 @@ namespace AirTrafficMonitor
         public DateTime timestamp { get; set; }
         public bool Airspace { get; set; }
 
-        public Track(string Tag, double X, double Y, double A)
-        {
-            this.tag = Tag;
-            this.X_coor = X;
-            this.Y_coor = Y;
-            this.Altitude = A;
-            this.Airspace = FlightTrack(X, Y, A);
-        }
+        //public Track(string Tag, double X, double Y, double A)
+        //{
+        //    this.tag = Tag;
+        //    this.X_coor = X;
+        //    this.Y_coor = Y;
+        //    this.Altitude = A;
+        //    this.Airspace = FlightTrack(X, Y, A);
+        //}
 
-        public bool FlightTrack(double X, double Y, double A)
+        public bool FlightTrack(double X_coor, double Y_coor, double Altitude)
         {
-            if (X >= 10000 && X <= 90000 && Y >= 10000 && Y <= 90000 && A >= 500 && A <= 20000)
+            if (X_coor >= 10000 && X_coor <= 90000 && Y_coor >= 10000 && Y_coor <= 90000 && Altitude >= 500 && Altitude <= 20000)
             {
                 return true;
             }

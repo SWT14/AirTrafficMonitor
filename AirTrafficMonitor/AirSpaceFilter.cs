@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitor
 {
-    public class AirSpaceFilter : IAirSpaceFilter
-    {
+//    public class AirSpaceFilter : IAirSpaceFilter
+//    {
       
 
         
 
-    }
+//    }
 }
