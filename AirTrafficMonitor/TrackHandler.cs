@@ -30,7 +30,7 @@ namespace AirTrafficMonitor
         {
             _trackList = new List<Track>();
 
-            foreach (var data in eventArgs.TransponderData)
+            foreach (var data in eventArgs.TransponderData)  // kalder Rawhandler på hvert track den modtager.
             {
                 Rawhandler(data);
                 // Split tracks
@@ -39,19 +39,17 @@ namespace AirTrafficMonitor
             }
         }
 
-        public void Rawhandler(string data)
-        {
-            //Use ";" as seperator for splitting data
+        public void Rawhandler(string data) // tager data fra TransponderData som parameter og konvertere det til Tracks
+        {           
             var _data = data.Split(';');
-            var TagId = _data[0];  //Item 1 is the tagid
-            var Xcoor = Int32.Parse(_data[1]); //Item 2 is the coordinate for 'X'
-            var Ycoor = Int32.Parse(_data[2]); //Item 3 is the coordinate for 'Y'
-            var altitude = Int32.Parse(_data[3]); //Item 4 is the altitude
-            var dateTime = DateTime.ParseExact(_data[4], //Item 5 is the exact time
+            var TagId = _data[0];
+            var Xcoor = Int32.Parse(_data[1]);
+            var Ycoor = Int32.Parse(_data[2]); 
+            var altitude = Int32.Parse(_data[3]); 
+            var dateTime = DateTime.ParseExact(_data[4], 
                 "yyyyMMddHHmmssfff",
                 null,
-                DateTimeStyles.None);
-
+                DateTimeStyles.None); //anveder datetime til at give os dato og tid på dagen.
             var track = new Track
             {
                 tag = TagId,
@@ -60,9 +58,9 @@ namespace AirTrafficMonitor
                 Altitude = altitude,
                 timestamp = dateTime
             };
-            _trackList.Add(track);
+            _trackList.Add(track);  // tilføjer tracket til _tracklist efter det er konveteret til et objekt af typen Track
+            System.Console.WriteLine(_trackList);
+            System.Console.WriteLine(data);
         }
-
     }
-
 }

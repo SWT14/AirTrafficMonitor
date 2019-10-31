@@ -12,16 +12,16 @@ namespace AirTrafficMonitor
     public class AirSpaceFilter : IAirSpaceFilter
     {
         public string Tag { get; set; }
-        public double X_Coor { get; set; }
-        public double Y_Coor { get; set; }
+        public double X_coor { get; set; }
+        public double Y_coor { get; set; }
         public double Altitude { get; set; }
         public bool AirSpace { get; set; }
 
         public AirSpaceFilter(string Tag, double X, double Y, double A)
         {
             this.Tag = Tag;
-            this.X_Coor = X;
-            this.Y_Coor = Y;
+            this.X_coor = X;
+            this.Y_coor = Y;
             this.Altitude = A;
             this.AirSpace = FilterTracks(X, Y, A);
 
