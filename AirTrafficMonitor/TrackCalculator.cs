@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitor
 {
-    public class TrackCalculator 
+    public class TrackCalculator : ITrackCalculator
     {
         public string tag { get; set; }
         public double X_coor { get; set; }

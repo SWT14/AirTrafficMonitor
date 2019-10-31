@@ -11,7 +11,7 @@ namespace AirTrafficMonitor
 {
     public class AirSpaceFilter : IAirSpaceFilter
     {
-        public string Tag { get; set; }
+        public string tag { get; set; }
         public double X_coor { get; set; }
         public double Y_coor { get; set; }
         public double Altitude { get; set; }
@@ -19,7 +19,7 @@ namespace AirTrafficMonitor
 
         public AirSpaceFilter(string Tag, double X, double Y, double A)
         {
-            this.Tag = Tag;
+            this.tag = Tag;
             this.X_coor = X;
             this.Y_coor = Y;
             this.Altitude = A;
