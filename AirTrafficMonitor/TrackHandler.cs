@@ -11,7 +11,7 @@ namespace AirTrafficMonitor
     public class TrackHandler : ITrackHandler
     {
         public List<Track> TrackList;
-
+        
         private ITransponderReceiver receiver;
         //Constructor injection for dependency
         public TrackHandler(ITransponderReceiver receiver)
@@ -24,23 +24,34 @@ namespace AirTrafficMonitor
         }
         public void DataHandler(object T, RawTransponderDataEventArgs eventArgs)
         {
-            TrackList = new List<Tracks>();
+            TrackList = new List<Track>();
 
             foreach (var data in eventArgs.TransponderData)
             {
                 // Split tracks
-                var tracks = Tracksplitter(data.TransponderData);
-
+                var Rawtrack = Rawhandler(data.Transponderdata);
+                Rawtrack.Split(); // virker det m¨ske?
                 // Put tracks i wrapper
                 var newTrackArgs = new NewTrackArgs
                 {
-                    Tracks = tracks
+                    Tracks = tracklist
                 };
 
                 // Send Event
-                sendEvent(newTrackArgs);
+               // sendEvent(newTrackArgs);
             }
         }
+
+        public string Rawhandler(public List<string> Rawtracks)
+        {
+
+            return Track;
+        }
+
+         public int bobsdfsdf(int)
+         { 
+    
+         }
     }
 
     public class Track
