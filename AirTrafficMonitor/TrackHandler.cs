@@ -12,10 +12,10 @@ namespace AirTrafficMonitor
 {
     public class TrackHandler : ITrackHandler
     {
-        public List<ITrack> _trackList;
-        
+        public List<ITrack> tracklist { get; set; }        
         private ITransponderReceiver _receiver;
-        //Constructor injection for dependency
+        public event EventHandler<TrackEvent> OnTrackCreated;
+         //Constructor injection for dependency
         public TrackHandler(ITransponderReceiver receiver)
         {
             
@@ -28,41 +28,48 @@ namespace AirTrafficMonitor
 
         public void DataHandler(object t, RawTransponderDataEventArgs eventArgs)
         {
-            _trackList = new List<ITrack>();
+            tracklist = new List<ITrack>();
 
             foreach (var data in eventArgs.TransponderData)  // kalder Rawhandler på hvert track den modtager.
             {
-                Rawhandler(data);
-                // Split tracks
-                // Send Event
-               // sendEvent(newTrackArgs);
-
+                Rawhandler(data);// Split tracks           
             }
-            
+            //OnTrackCreated(tracklist);
         }
 
-        public void Rawhandler(String data) // tager data fra TransponderData som parameter og konvertere det til Tracks
+        public void Rawhandler(string data) // tager data fra TransponderData som parameter og konvertere det til Tracks
         {           
             var _data = data.Split(';');
-            var TagId = _data[0];
-            var Xcoor = Int32.Parse(_data[1]);
-            var Ycoor = Int32.Parse(_data[2]); 
-            var altitude = Int32.Parse(_data[3]); 
-            var dateTime = DateTime.ParseExact(_data[4], 
+            Int32.TryParse(_data[1], out var coordinateX);
+            Int32.TryParse(_data[2], out var coordinateY);
+            Int32.TryParse(_data[3], out var altitude);
+            DateTime dateTime;
+            dateTime = DateTime.TryParseExact(_data[4],
                 "yyyyMMddHHmmssfff",
                 null,
-                DateTimeStyles.None); //anveder datetime til at give os dato og tid på dagen.
-            var track = new Track
+                DateTimeStyles.None,
+                out dateTime)
+                ? dateTime
+                : DateTime.MinValue;
+
+            tracklist.Add(new Track()
             {
-                tag = TagId,
-                X_coor = Xcoor,
-                Y_coor = Ycoor,
+                tag = _data[0],
+                X_coor = coordinateX,
+                Y_coor = coordinateY,
                 Altitude = altitude,
                 timestamp = dateTime
-            };
-            _trackList.Add(track);  // tilføjer tracket til _tracklist efter det er konveteret til et objekt af typen Track
-            System.Console.WriteLine(_trackList);
-            System.Console.WriteLine(data);
+            });
+            
         }
+        protected virtual void OnCreatedTrack(List<ITrack> tracklist)
+        {
+            OnTrackCreated?.Invoke(this, new TrackEvent() { tlist = tracklist });// Send Event
+        }// sendEvent(newTrackArgs);
     }
+            public class TrackEvent : EventArgs
+                {
+                    public List<ITrack> tlist { get; set; }
+                } 
+ 
 }

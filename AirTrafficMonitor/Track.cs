@@ -27,9 +27,9 @@ namespace AirTrafficMonitor
             this.Airspace = FlightTrack(X, Y, A);
         }
 
-        public bool FlightTrack(double X, double Y, double A)
+        public bool FlightTrack(double X_coor, double Y_coor, double Altitude)
         {
-            if (X >= 10000 && X <= 90000 && Y >= 10000 && Y <= 90000 && A >= 500 && A <= 20000)
+            if (X_coor >= 10000 && X_coor <= 90000 && Y_coor >= 10000 && Y_coor <= 90000 && Altitude >= 500 && Altitude <= 20000)
             {
                 return true;
             }

@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace AirTrafficMonitor
 {
-    public class AirSpaceFilter : IAirSpaceFilter
-    {
+//    public class AirSpaceFilter : IAirSpaceFilter
+//    {
       
         public Dictionary<string,ITrack> TrackDict { get; set; }
         public Dictionary<string,ITrackCalculator> TrackCalcDict { get; set; }
@@ -92,5 +92,5 @@ namespace AirTrafficMonitor
         }
 
 
-    }
+//    }
 }

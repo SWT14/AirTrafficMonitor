@@ -10,6 +10,7 @@ namespace AirTrafficMonitor
 {
     public interface ITrackHandler
     {
-        
+        event EventHandler<TrackEvent> OnTrackCreated;
+        void Rawhandler(string data);
     }
 }
