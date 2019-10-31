@@ -39,7 +39,7 @@ namespace AirTrafficMonitor
             }
         }
 
-        protected string Rawhandler(string data)
+        public void Rawhandler(string data)
         {
             //Use ";" as seperator for splitting data
             var _data = data.Split(';');
@@ -60,9 +60,7 @@ namespace AirTrafficMonitor
                 Altitude = altitude,
                 timestamp = dateTime
             };
-
-            return track;
-
+            _trackList.Add(track);
         }
 
     }

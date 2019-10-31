@@ -12,7 +12,8 @@ namespace AirTrafficMonitor
     {
         static void Main(string[] args)
         {
-           
+            System.Console.WriteLine(_Tracklist);
         }
+
     }
 }
