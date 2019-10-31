@@ -27,6 +27,12 @@ namespace AirTrafficMonitor
 
         }
 
+        foreach(Track in _TrackList)
+            {
+            
+            }
+
+
 
         public bool FilterTracks(double X, double Y, double A)
         {
