@@ -55,6 +55,7 @@
     <Compile Include="OnCollisionCourse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Track.cs" />
     <Compile Include="TrackCalculator.cs" />
     <Compile Include="TrackHandler.cs" />
     <Compile Include="TransponderReceiver.cs" />

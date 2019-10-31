@@ -18,8 +18,8 @@ namespace AirTrafficMonitor
 
         public TrackCalculator(IAirSpaceFilter trackBefore, IAirSpaceFilter trackNow)
         {
-            this.tag = trackNow.tag;
-            X_coor = trackNow._xCoordinate;
+            this.tag = trackNow
+            X_coor = trackNow.;
             Y_coor = trackNow._yCoordinate;
             this.Altitude = trackNow._altitude;
             Velocity = VelocityCalculation(trackBefore._xCoordinate, X_coor, trackBefore._yCoordinate,
