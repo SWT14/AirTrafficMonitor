@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AirTrafficMonitor;
 using NSubstitute;
 using NUnit.Framework;
-using AirTrafficMonitor.TransponderReceiver;
+//using AirTrafficMonitor.TransponderReceiver;
 
 
 namespace AirTrafficMonitoring.Unit.Test
