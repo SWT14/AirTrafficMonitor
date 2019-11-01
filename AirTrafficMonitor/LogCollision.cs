@@ -8,5 +8,6 @@ namespace AirTrafficMonitor
 {
     class LogCollision : ILog
     {
+
     }
 }
