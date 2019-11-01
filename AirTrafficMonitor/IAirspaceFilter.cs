@@ -9,6 +9,6 @@ namespace AirTrafficMonitor
 {
     public interface IAirSpaceFilter
     {
-        
+        Dictionary<string,ITrackCalculator>
     }
 }

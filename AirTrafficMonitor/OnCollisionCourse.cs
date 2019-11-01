@@ -25,7 +25,7 @@ namespace AirTrafficMonitor
             _collisionFlights = collisionFlights;
             _collisionTime = DateTime.Now;
 
-            airSpaceFilter.TrackInAir += TrackInAirSpace;
+            airSpaceFilter.TrackUpdated += TrackInAirSpace;
             _collisionTracks = new List<OnCollisionCourse>();
         }
 
