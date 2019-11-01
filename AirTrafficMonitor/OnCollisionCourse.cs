@@ -25,11 +25,11 @@ namespace AirTrafficMonitor
             _collisionFlights = collisionFlights;
             _collisionTime = DateTime.Now;
 
-            airSpaceFilter.TrackUpdated += TrackInAirSpace;
+            airSpaceFilter.TrackUpdated += onTrackUpdated;
             _collisionTracks = new List<OnCollisionCourse>();
         }
 
-        public void TrackInAirSpace(TrackEvent TEtracks)
+        public void TrackInAirSpace(TrackinAirEvent TEtracks)
         {
             _tracks= TEtracks;
             _collisionTracks = new List<OnCollisionCourse>();
@@ -72,13 +72,14 @@ namespace AirTrafficMonitor
 
         protected virtual void OnCreateSeperation(List<OnCollisionCourse> collisiontracks)
         {
-            CreateSeperation?.Invoke((this, new SeperationEvent() {Collisiontracks = collisiontracks});
+            CreateSeperation?.Invoke(this, new SeperationEvent() {Collisiontracks = collisiontracks});
         }
 
-        public class SeperationEvent : EventArgs
-        {
-            public List<OnCollisionCourse> Collisiontracks { get; set; }
-        }
+    }
 
+
+    public class SeperationEvent : EventArgs
+    {
+        public List<OnCollisionCourse> Collisiontracks { get; set; }
     }
 }

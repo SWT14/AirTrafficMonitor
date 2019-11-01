@@ -5,10 +5,10 @@ namespace AirTrafficMonitor
 {
     public interface IOnCollisionCourse
     {
-        event EventHandler<OnCollisionCourse.SeperationEvent> CreateSeperation;
+        event EventHandler<SeperationEvent> CreateSeperation;
 
-        double Span(ITrackCalculator track1, ITrackCalculator track2)
-        void TrackInAirSpace(TrackEvent TEtracks); 
+        double Span(ITrackCalculator track1, ITrackCalculator track2);
+        void TrackInAirSpace(TrackinAirEvent TEtracks); 
         Dictionary<String, TrackCalculator> _tracks { get; set; }
         
     }
