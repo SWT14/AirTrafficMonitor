@@ -44,7 +44,7 @@ namespace AirTrafficMonitor
             Int32.TryParse(_data[2], out var coordinateY);
             Int32.TryParse(_data[3], out var altitude);
             DateTime dateTime;
-            dateTime = DateTime.TryParseExact(_data[4],
+            dateTime = DateTime.TryParseExact(_data[4], //anvender Datetime til at definere tidspunkt og data
                 "yyyyMMddHHmmssfff",
                 null,
                 DateTimeStyles.None,   // anvender Datetime til at definere tidspunktet og dato
