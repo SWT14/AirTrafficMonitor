@@ -9,6 +9,11 @@ namespace AirTrafficMonitor
 {
     public interface IAirSpaceFilter
     {
-        Dictionary<string,ITrackCalculator>
+        Dictionary<string, ITrackCalculator> TrackDict;
+        Dictionary<string, ITrack> TrackDict;
+        event EventHandler<TrackinAirEvent> TrackUpdated;
+        List<ITrack> tracklist;
+        void Create(ITrack track);
+        void Remove(string tag);
     }
 }
