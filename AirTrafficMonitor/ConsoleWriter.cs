@@ -16,8 +16,6 @@ namespace AirTrafficMonitor
                 Console.WriteLine("flynummer:" + track.tag + "X coordinat:" + track.X_coor + "Y coordinat:" + track.Y_coor + "højde:" + track.Altitude + "meter" + track.CompassCourse + track.timestamp);
             }
         }
-
-
     }
 
 }
