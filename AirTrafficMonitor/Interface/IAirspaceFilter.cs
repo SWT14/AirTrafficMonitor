@@ -9,7 +9,7 @@ namespace AirTrafficMonitor
 {
     public interface IAirSpaceFilter
     {
-        string tag { get; set; }
+        string Tag { get; set; }
         double X_coor { get; set; }
         double Y_coor { get; set; }
         double Altitude { get; set; }
