@@ -44,15 +44,15 @@ namespace AirTrafficMonitor
             Int32.TryParse(_data[2], out var coordinateY);
             Int32.TryParse(_data[3], out var altitude);
             DateTime dateTime;
-            dateTime = DateTime.TryParseExact(_data[4],
+            dateTime = DateTime.TryParseExact(_data[4], //anvender Datetime til at definere tidspunkt og data
                 "yyyyMMddHHmmssfff",
                 null,
-                DateTimeStyles.None,
+                DateTimeStyles.None,   // anvender Datetime til at definere tidspunktet og dato
                 out dateTime)
                 ? dateTime
                 : DateTime.MinValue;
 
-            tracklist.Add(new Track()
+            tracklist.Add(new Track()  // tilføjer et objekt af klassen Track til tracklisten.
             {
                 tag = _data[0],
                 X_coor = coordinateX,
