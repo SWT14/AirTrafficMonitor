@@ -8,5 +8,7 @@ namespace AirTrafficMonitor
 {
     interface ILog
     {
+        string[] CreateString(List<OnCollisionCourse> col);
+
     }
 }
