@@ -26,7 +26,7 @@ namespace AirTrafficMonitor
             this.Altitude = A;
             this.Airspace = FlightTrack(X, Y, A);
         }
-        //public Track() { }
+        public Track() { }  //default constructor nødvendig for track handler
         public bool FlightTrack(double X_coor, double Y_coor, double Altitude)
         {
             if (X_coor >= 10000 && X_coor <= 90000 && Y_coor >= 10000 && Y_coor <= 90000 && Altitude >= 500 && Altitude <= 20000)
